@@ -31,8 +31,6 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final isDarkMode =
-    //     MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.symmetric(
@@ -43,14 +41,6 @@ class Chart extends StatelessWidget {
       height: 180,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        // gradient: LinearGradient(
-        //   colors: [
-        //     Theme.of(context).colorScheme.primary.withOpacity(0.3),
-        //     Theme.of(context).colorScheme.primary.withOpacity(0.0)
-        //   ],
-        //   begin: Alignment.bottomCenter,
-        //   end: Alignment.topCenter,
-        // ),
       ),
       child: Column(
         children: [
@@ -63,7 +53,7 @@ class Chart extends StatelessWidget {
                     fill: bucket.totalExpenses == 0
                         ? 0
                         : bucket.totalExpenses / maxTotalExpense,
-                  )
+                  ),
               ],
             ),
           ),

@@ -5,18 +5,6 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      // theme: ThemeData().copyWith(
-      //   scaffoldBackgroundColor: Colors.black,
-      //   cardTheme: const CardTheme().copyWith(
-      //     color: Colors.white,
-      //     margin: const EdgeInsets.symmetric(
-      //       horizontal: 15,
-      //       vertical: 3,
-      //     ),
-      //   ),
-      // ),
-      home: Expenses(),
-    ),
+    const MaterialApp(home: Expenses()),
   );
 }
