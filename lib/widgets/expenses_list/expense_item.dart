@@ -10,6 +10,8 @@ class ExpenseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double textScaler = 1.0;
+
     return Card(
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -21,6 +23,7 @@ class ExpenseItem extends StatelessWidget {
             Text(
               expense.title,
               style: blackText,
+              textScaler: const TextScaler.linear(textScaler),
             ),
             const SizedBox(height: 4),
             Row(
@@ -28,6 +31,7 @@ class ExpenseItem extends StatelessWidget {
                 Text(
                   '\$${expense.amount.toStringAsFixed(2)}',
                   style: blackText,
+                  textScaler: const TextScaler.linear(textScaler),
                 ),
                 const Spacer(),
                 Row(
@@ -39,6 +43,7 @@ class ExpenseItem extends StatelessWidget {
                     Text(
                       expense.formattedDate,
                       style: blackText,
+                      textScaler: const TextScaler.linear(textScaler),
                     ),
                   ],
                 ),

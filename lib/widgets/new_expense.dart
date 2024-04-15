@@ -1,5 +1,4 @@
 import 'package:expense_tracker_app/models/expense.dart';
-
 import 'package:flutter/material.dart';
 
 class NewExpense extends StatefulWidget {
@@ -18,11 +17,11 @@ class _NewExpenseState extends State<NewExpense> {
   final _amountController = TextEditingController();
   DateTime? _selectedDate;
   Category _selectedCategory = Category.leisure;
+  static const double _textScaler = 1.0;
 
   void _presentDatePicker() async {
     final todayDate = DateTime.now();
-    final firstDate =
-        DateTime(todayDate.year - 1, todayDate.month, todayDate.day);
+    final firstDate = DateTime(todayDate.year - 1, todayDate.month, todayDate.day);
     final pickedDate = await showDatePicker(
       context: context,
       initialDate: todayDate,
@@ -37,23 +36,28 @@ class _NewExpenseState extends State<NewExpense> {
   void _submitExpenseData() {
     final enteredAmount = double.tryParse(_amountController.text);
     final amountIsInvalid = enteredAmount == null || enteredAmount <= 0;
-    if (_titleController.text.trim().isEmpty ||
-        amountIsInvalid ||
-        _selectedDate == null) {
+    if (_titleController.text.trim().isEmpty || amountIsInvalid || _selectedDate == null) {
       showDialog(
         context: context,
         builder: (ctx) {
           return AlertDialog(
-            title: const Text('Invalid input'),
+            title: const Text(
+              'Invalid input',
+              textScaler: TextScaler.linear(_textScaler),
+            ),
             content: const Text(
               'Please make sure that you entered a valid title, amount & date.',
+              textScaler: TextScaler.linear(_textScaler),
             ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(ctx);
                 },
-                child: const Text('Okay'),
+                child: const Text(
+                  'Okay',
+                  textScaler: TextScaler.linear(_textScaler),
+                ),
               ),
             ],
           );
@@ -82,11 +86,12 @@ class _NewExpenseState extends State<NewExpense> {
   @override
   Widget build(BuildContext context) {
     final keyboardSpace = MediaQuery.of(context).viewInsets.bottom;
+    const double textScaler = 1.0;
+
     return LayoutBuilder(
       builder: (ctx, constrains) {
         final width = constrains.maxWidth;
         return SizedBox(
-          height: double.infinity,
           child: SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.fromLTRB(18, 0, 18, keyboardSpace + 18),
@@ -104,6 +109,7 @@ class _NewExpenseState extends State<NewExpense> {
                               label: Text(
                                 'Title',
                                 style: TextStyle(color: Colors.black),
+                                textScaler: TextScaler.linear(textScaler),
                               ),
                             ),
                           ),
@@ -117,6 +123,7 @@ class _NewExpenseState extends State<NewExpense> {
                               label: Text(
                                 'Amount',
                                 style: TextStyle(color: Colors.black),
+                                textScaler: TextScaler.linear(textScaler),
                               ),
                             ),
                             keyboardType: TextInputType.number,
@@ -132,6 +139,7 @@ class _NewExpenseState extends State<NewExpense> {
                         label: Text(
                           'Title',
                           style: TextStyle(color: Colors.black),
+                          textScaler: TextScaler.linear(textScaler - 0.2),
                         ),
                       ),
                     ),
@@ -146,6 +154,7 @@ class _NewExpenseState extends State<NewExpense> {
                                   value: category,
                                   child: Text(
                                     category.name.toUpperCase(),
+                                    textScaler: const TextScaler.linear(textScaler),
                                   ),
                                 ),
                               )
@@ -166,9 +175,8 @@ class _NewExpenseState extends State<NewExpense> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                _selectedDate == null
-                                    ? 'No Date Selected'
-                                    : formatter.format(_selectedDate!),
+                                _selectedDate == null ? 'No Date Selected' : formatter.format(_selectedDate!),
+                                textScaler: const TextScaler.linear(textScaler - 0.3),
                               ),
                               IconButton(
                                 onPressed: _presentDatePicker,
@@ -179,12 +187,18 @@ class _NewExpenseState extends State<NewExpense> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text('Cancel'),
+                                child: const Text(
+                                  'Cancel',
+                                  textScaler: TextScaler.linear(textScaler),
+                                ),
                               ),
                               const SizedBox(width: 18),
                               ElevatedButton(
                                 onPressed: _submitExpenseData,
-                                child: const Text('Save Expense'),
+                                child: const Text(
+                                  'Save Expense',
+                                  textScaler: TextScaler.linear(textScaler),
+                                ),
                               ),
                             ],
                           ),
@@ -202,6 +216,7 @@ class _NewExpenseState extends State<NewExpense> {
                               label: Text(
                                 'Amount',
                                 style: TextStyle(color: Colors.black),
+                                textScaler: TextScaler.linear(textScaler - 0.2),
                               ),
                             ),
                             keyboardType: TextInputType.number,
@@ -213,9 +228,8 @@ class _NewExpenseState extends State<NewExpense> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                _selectedDate == null
-                                    ? 'No Date Selected'
-                                    : formatter.format(_selectedDate!),
+                                _selectedDate == null ? 'No Date Selected' : formatter.format(_selectedDate!),
+                                textScaler: const TextScaler.linear(textScaler - 0.3),
                               ),
                               IconButton(
                                 onPressed: _presentDatePicker,
@@ -238,6 +252,7 @@ class _NewExpenseState extends State<NewExpense> {
                                   value: category,
                                   child: Text(
                                     category.name.toUpperCase(),
+                                    textScaler: const TextScaler.linear(textScaler - 0.2),
                                   ),
                                 ),
                               )
@@ -251,17 +266,23 @@ class _NewExpenseState extends State<NewExpense> {
                             });
                           },
                         ),
-                        const SizedBox(width: 63),
+                        const Spacer(),
                         TextButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Text('Cancel'),
+                          child: const Text(
+                            'Cancel',
+                            textScaler: TextScaler.linear(textScaler - 0.3),
+                          ),
                         ),
                         const SizedBox(width: 18),
                         ElevatedButton(
                           onPressed: _submitExpenseData,
-                          child: const Text('Save Expense'),
+                          child: const Text(
+                            'Save Expense',
+                            textScaler: TextScaler.linear(textScaler - 0.3),
+                          ),
                         ),
                       ],
                     ),

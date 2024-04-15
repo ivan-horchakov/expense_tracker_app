@@ -1,8 +1,10 @@
-# Expense Tracker Flutter App
+# Flutter Expense Tracker App
 
-This app was built during passing the [Sections 5](https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/37143046#overview) & [6](https://www.udemy.com/course/learn-flutter-dart-to-build-ios-android-apps/learn/lecture/37143762#overview) of the "Flutter & Dart - The Complete Guide [2024 Edition.]" course.
+Simple Flutter Expense Tracker App. Optimized for Android & iOS mobile devices including vertical & horizontal orientation.
 
-A few useful resources:
+This app was built while passing the "Section 5" & "Section 56 of the "Flutter & Dart - The Complete Guide [2024 Edition.]" course on Udemy.
+
+A few useful resources for starters:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
