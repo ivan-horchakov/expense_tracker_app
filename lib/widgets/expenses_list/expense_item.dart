@@ -15,8 +15,8 @@ class ExpenseItem extends StatelessWidget {
     return Card(
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 16,
+          horizontal: 12,
+          vertical: 12,
         ),
         child: Column(
           children: [
@@ -25,7 +25,6 @@ class ExpenseItem extends StatelessWidget {
               style: blackText,
               textScaler: const TextScaler.linear(textScaler),
             ),
-            const SizedBox(height: 4),
             Row(
               children: [
                 Text(
@@ -37,9 +36,7 @@ class ExpenseItem extends StatelessWidget {
                 Row(
                   children: [
                     Icon(categoryIcons[expense.category]),
-                    const SizedBox(
-                      width: 8,
-                    ),
+                    const SizedBox(width: 8),
                     Text(
                       expense.formattedDate,
                       style: blackText,
